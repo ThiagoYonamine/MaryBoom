@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
         this.gameObject.SetActive(false);
         for (int i = 0; i<3; i++) { 
             stars[i].SetActive(false);
+            buttons[i].SetActive(false);
         }
     }
 
@@ -44,8 +45,6 @@ public class Menu : MonoBehaviour
     public void Play(int n, int level)
     {
         this.gameObject.SetActive(true);
-     
-        
         if (n == 0)
         {
            background.sprite = defeat;

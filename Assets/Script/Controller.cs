@@ -10,16 +10,28 @@ public class Controller : MonoBehaviour
     public Menu menu;
     public Text bomb;
     public Image fade;
+    public GoogleMobileAdsDemoScript ads;
     private int bombNumber;
     private int currentScene;
     private int currentStar;
+    private bool menuCalled;
+    private int plays;
 
     void Start()
     {
+        menu.gameObject.SetActive(true);
         currentScene = GetCurrentScene();
         currentStar = PlayerPrefs.GetInt(Constant.FASE_PREFIX + currentScene.ToString(), 0);
         bombNumber = Constant.initb[currentScene];
         bomb.text = bombNumber.ToString();
+        menuCalled = false;
+
+        plays = PlayerPrefs.GetInt("Plays", 0);
+        if (plays % 5 == 0)
+        {
+            LoadInterestial();
+        }
+      
     }
 
     public bool IsFinished()
@@ -54,15 +66,26 @@ public class Controller : MonoBehaviour
 
     public void ShowMenu(bool isVictory)
     {
-        int starNumber = 0;
-        if (isVictory) {
-            ResetFadeOut();
-            if (bombNumber >= Constant.star3[currentScene]) starNumber = 3;
-            else if (bombNumber >= Constant.star2[currentScene]) starNumber = 2;
-            else if (bombNumber >= Constant.star1[currentScene]) starNumber = 1;
+        if (!menuCalled)
+        {
+            menuCalled =true;
+            int starNumber = 0;
+            if (isVictory)
+            {
+                ResetFadeOut();
+                if (bombNumber >= Constant.star3[currentScene]) starNumber = 3;
+                else if (bombNumber >= Constant.star2[currentScene]) starNumber = 2;
+                else if (bombNumber >= Constant.star1[currentScene]) starNumber = 1;
+            }
+            SaveStarPrefs(starNumber);
+            if (plays % 5 == 0)
+            {
+                ShowInterestial();
+            }
+            ShowBanner();
+            PlayerPrefs.SetInt("Plays", ++plays);
+            menu.Play(starNumber, currentScene);
         }
-        SaveStarPrefs(starNumber);
-        menu.Play(starNumber, currentScene);
     }
 
     private void SaveStarPrefs(int newStar)
@@ -90,5 +113,26 @@ public class Controller : MonoBehaviour
             Debug.Log("Unable to parse int");
             return 0;
         }
+    }
+
+    public void ShowBanner()
+    {
+        ads.RequestBanner();
+    }
+
+    public void LoadInterestial()
+    {
+        ads.RequestInterstitial();
+    }
+
+    public void ShowInterestial()
+    {
+        ads.ShowInterstitial();
+    }
+
+    void OnDestroy()
+    {
+        Debug.Log("OnDestroy1");
+        ads.DestroyAds();
     }
 }
