@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bombs
+  - TNT
+  - TimerBomb
+  - Hay
+  - Mola
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 760950415
+    locked: 0
+  - name: Tiles
+    uniqueID: 3143975321
+    locked: 0
+  - name: Finish
+    uniqueID: 3239468153
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Bomb
+    uniqueID: 2597756079
+    locked: 0
+  - name: Player
+    uniqueID: 838007219
+    locked: 0
