@@ -35,6 +35,7 @@ public class SceneManagerScript : MonoBehaviour
             int sceneNumber = Int32.Parse(scene.Substring(4));
             sceneNumber++;
             string nextScene = Constant.FASE_PREFIX + sceneNumber.ToString();
+            Debug.Log("Goto nextScne: " + nextScene);
             GotoScene(nextScene);
         }
         catch (FormatException)

@@ -50,6 +50,9 @@ TagManager:
   - name: Tiles
     uniqueID: 3143975321
     locked: 0
+  - name: Hays
+    uniqueID: 2667415729
+    locked: 0
   - name: Finish
     uniqueID: 3239468153
     locked: 0

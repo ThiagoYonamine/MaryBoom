@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     private float gameOverTimer;
     private bool touchedEnemy;
 
-
     private void Start()
     {
         finish = false;
@@ -28,19 +27,11 @@ public class Player : MonoBehaviour
             finishPosition = other.gameObject.transform.position;
         }
 
-        else if (other.gameObject.tag == "Mola")
-        {
-            other.GetComponent<Animator>().Play("MolaPlay");
-
-            float forceX = Mathf.Cos(other.transform.eulerAngles.z%90);
-            float forceY = Mathf.Abs(Mathf.Sin(other.transform.eulerAngles.z%90));
-            this.GetComponent<Rigidbody>().AddForce(new Vector3(forceX*10, forceY*10, 0), ForceMode.Impulse);
-        }
-
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        //PlaySounds(hitSound);
         if (collision.gameObject.tag == "Enemy")
         {
             touchedEnemy = true;
@@ -94,7 +85,7 @@ public class Player : MonoBehaviour
     private bool IsStopped()
     {
         Rigidbody rigidbody = this.GetComponent<Rigidbody>();
-        if (rigidbody.velocity.sqrMagnitude < .1 && rigidbody.angularVelocity.sqrMagnitude < .1)
+        if (Mathf.Abs(rigidbody.velocity.sqrMagnitude) < .1 && Mathf.Abs(rigidbody.angularVelocity.sqrMagnitude) < .1)
         {
             return true;
         }

@@ -19,6 +19,7 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
+        BGMusic.Instance.ResumeMusic();
         menu.gameObject.SetActive(true);
         currentScene = GetCurrentScene();
         currentStar = PlayerPrefs.GetInt(Constant.FASE_PREFIX + currentScene.ToString(), 0);
@@ -82,6 +83,7 @@ public class Controller : MonoBehaviour
             {
                 ShowInterestial();
             }
+            Debug.Log("ShowBanner");
             ShowBanner();
             PlayerPrefs.SetInt("Plays", ++plays);
             menu.Play(starNumber, currentScene);

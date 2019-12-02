@@ -40,7 +40,11 @@ public class Explosion : MonoBehaviour
                 }
                 else
                 {
-                    rib.velocity = new Vector3(rib.velocity.x, 0, 0);
+                    if (rib.velocity.y < 0)
+                    {
+                        rib.velocity = new Vector3(rib.velocity.x, 0, 0);
+                    }
+                    
                     rib.AddExplosionForce(bombSize.x * power, this.GetComponent<Transform>().position, bombSize.x * 2f, 0.1f, ForceMode.Impulse);
                 }
             }

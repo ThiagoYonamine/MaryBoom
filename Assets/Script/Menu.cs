@@ -12,13 +12,20 @@ public class Menu : MonoBehaviour
     public Sprite defeat;
     public Text level_txt;
 
+    public AudioClip[] starSound;
+    public AudioClip winSound;
+    public AudioClip defeatSound;
+    private AudioSource audioSource;
+
     public void Start()
     {
+
         this.gameObject.SetActive(false);
         for (int i = 0; i<3; i++) { 
             stars[i].SetActive(false);
             buttons[i].SetActive(false);
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     IEnumerator ActiveStars(int n)
@@ -28,7 +35,8 @@ public class Menu : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
             stars[i].SetActive(true);
-           
+            PlaySounds(starSound[i]);
+
         }
 
         if (n > 0) n = 3;
@@ -44,19 +52,28 @@ public class Menu : MonoBehaviour
 
     public void Play(int n, int level)
     {
+        BGMusic.Instance.PauseMusic();
         this.gameObject.SetActive(true);
         if (n == 0)
         {
            background.sprite = defeat;
+           PlaySounds(defeatSound);
         }
         else
         {
             background.sprite = win;
+            PlaySounds(winSound);
         }
 
         StartCoroutine(ActiveStars(n));
         level_txt.text = level.ToString();
     }
 
-
+    private void PlaySounds(AudioClip audio)
+    {
+        if (PlayerPrefs.GetInt("Sound", 0) == 1)
+        {
+            audioSource.PlayOneShot(audio);
+        }
+    }
 }

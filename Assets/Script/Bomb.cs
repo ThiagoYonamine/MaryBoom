@@ -12,10 +12,14 @@ public class Bomb : MonoBehaviour
     private float plusY;
     private bool pressed;
 
+    public AudioClip explosionSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         pressed = false;
-        plusY = 2f;
+        plusY = 1.8f;
     }
 
     void Update()
@@ -23,6 +27,10 @@ public class Bomb : MonoBehaviour
         if (controller.HasBomb() && !controller.IsFinished())
         {
             CheckTouch();
+        }
+        else
+        {
+            Destroy(bombInstance);
         }
     }
 
@@ -49,6 +57,7 @@ public class Bomb : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended)
             {
+                audioSource.PlayOneShot(explosionSound);
                 controller.DecrementBombNumber();
                 Vector3 position = cam.ScreenToWorldPoint(touch.position);
                 Vector2 bombSize = bombInstance.GetComponent<Transform>().localScale;
@@ -74,6 +83,7 @@ public class Bomb : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            PlaySounds();
             controller.DecrementBombNumber();
             Vector3 position = cam.ScreenToWorldPoint(Input.mousePosition);
             Vector2 bombSize = bombInstance.GetComponent<Transform>().localScale;
@@ -83,5 +93,13 @@ public class Bomb : MonoBehaviour
             pressed = false;
         }
 #endif
+    }
+
+    private void PlaySounds()
+    {
+        if(PlayerPrefs.GetInt("Sound", 0) == 1)
+        {
+            audioSource.PlayOneShot(explosionSound);
+        }
     }
 }
