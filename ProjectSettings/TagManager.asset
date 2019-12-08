@@ -11,6 +11,7 @@ TagManager:
   - Mola
   - Enemy
   - Obs
+  - Tiles
   layers:
   - Default
   - TransparentFX
