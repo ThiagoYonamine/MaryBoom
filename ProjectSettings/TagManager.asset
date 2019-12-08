@@ -10,6 +10,7 @@ TagManager:
   - Hay
   - Mola
   - Enemy
+  - Obs
   layers:
   - Default
   - TransparentFX
