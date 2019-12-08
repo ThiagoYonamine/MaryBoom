@@ -17,7 +17,7 @@ public class TrapBomb : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Player" || col.gameObject.tag == "Obs")
+        if (col.gameObject.tag != "Tiles" && col.gameObject.tag != "Hay")
         {
             PlaySounds(explosionSound);
             StartCoroutine(StartDetonation());
