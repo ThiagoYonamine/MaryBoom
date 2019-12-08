@@ -10,6 +10,7 @@ public class CameraScript : MonoBehaviour
     private float desireX;
     private float desireY;
     private float cameraSpeed;
+    public float cameraSize=5;
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class CameraScript : MonoBehaviour
     {
         Vector3 playerPosition = player.GetComponent<Transform>().position;
         float currentCameraSize = this.GetComponent<Camera>().orthographicSize;
-        this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(currentCameraSize, 5+playerPosition.y*0.05f, Time.deltaTime*cameraSpeed);
+        this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(currentCameraSize, cameraSize+playerPosition.y*0.05f, Time.deltaTime*cameraSpeed);
         desireX = playerPosition.x * scaleX;
         desireY = (playerPosition.y * scaleY)-1.2f;
         Vector3 currentPosition = this.GetComponent<Transform>().position;
