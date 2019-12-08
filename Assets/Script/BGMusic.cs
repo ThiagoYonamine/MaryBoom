@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class BGMusic : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    public AudioClip[] musics;
     private static BGMusic instance = null;
     private float volume = 1f;
+    private int musicIndex = 0;
     private bool shouldPlay;
     public static BGMusic Instance
     {
@@ -32,11 +30,14 @@ public class BGMusic : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+
+
     public void Update()
     {
         if (shouldPlay)
         {
             this.gameObject.GetComponent<AudioSource>().UnPause();
+            CheckNewMusic();
             this.gameObject.GetComponent<AudioSource>().volume = Mathf.Lerp(this.gameObject.GetComponent<AudioSource>().volume,
                 volume, Time.deltaTime);
         }
@@ -65,6 +66,15 @@ public class BGMusic : MonoBehaviour
         shouldPlay = false;
     }
 
+    private void CheckNewMusic()
+    {
+        if (!this.gameObject.GetComponent<AudioSource>().isPlaying)
+        {
+            musicIndex++;
+            this.gameObject.GetComponent<AudioSource>().clip = musics[musicIndex%2];
+            this.gameObject.GetComponent<AudioSource>().Play();
+        }
+    }
     public void RefreshPlayerPrefs()
     {
         shouldPlay = PlayerPrefs.GetInt("Music") == 1;

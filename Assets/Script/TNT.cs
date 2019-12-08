@@ -16,7 +16,7 @@ public class TNT : MonoBehaviour
 
     IEnumerator StartDetonation()
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.07f);
         PlaySounds(explosionSound);
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         this.GetComponent<SpriteRenderer>().enabled = false;

@@ -2777,6 +2777,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459fc6046742c3345b8e866a808c78a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musics:
+  - {fileID: 8300000, guid: ebf3ea331a73d8545b8fa5ee83e84224, type: 3}
+  - {fileID: 8300000, guid: 3d3ebd13a66c95343b6e8f5c67c3c184, type: 3}
 --- !u!82 &924331065
 AudioSource:
   m_ObjectHideFlags: 0
