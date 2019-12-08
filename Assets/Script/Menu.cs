@@ -44,7 +44,16 @@ public class Menu : MonoBehaviour
 
         for (int b = 0; b < n; b++)
         {
-            buttons[b].SetActive(true);
+            // Game Over case, should not active next btn
+            if (n==2 && b==1) 
+            {
+                buttons[b+1].SetActive(true);
+            }
+            else
+            {
+                buttons[b].SetActive(true);
+            }
+            
             yield return new WaitForSeconds(0.2f);
         }
 

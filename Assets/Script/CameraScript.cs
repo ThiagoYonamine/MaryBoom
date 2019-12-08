@@ -23,7 +23,7 @@ public class CameraScript : MonoBehaviour
         Vector3 playerPosition = player.GetComponent<Transform>().position;
         float currentCameraSize = this.GetComponent<Camera>().orthographicSize;
         this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(currentCameraSize, 5+playerPosition.y*0.05f, Time.deltaTime*cameraSpeed);
-        desireX = playerPosition.x * scaleX;
+        desireX = playerPosition.x * scaleX*1.2f;
         desireY = (playerPosition.y * scaleY)-1.2f;
         Vector3 currentPosition = this.GetComponent<Transform>().position;
         if (Mathf.Abs(currentPosition.x - desireX) > 0.1 || Mathf.Abs(currentPosition.y - desireY) > 0.1)
