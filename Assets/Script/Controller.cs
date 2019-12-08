@@ -19,7 +19,11 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        BGMusic.Instance.ResumeMusic();
+        if (BGMusic.Instance != null)
+        {
+            BGMusic.Instance.ResumeMusic();
+        }
+
         menu.gameObject.SetActive(true);
         currentScene = GetCurrentScene();
         currentStar = PlayerPrefs.GetInt(Constant.FASE_PREFIX + currentScene.ToString(), 0);

@@ -61,7 +61,10 @@ public class Menu : MonoBehaviour
 
     public void Play(int n, int level)
     {
-        BGMusic.Instance.PauseMusic();
+        if (BGMusic.Instance != null)
+        {
+            BGMusic.Instance.PauseMusic();
+        }
         this.gameObject.SetActive(true);
         if (n == 0)
         {
