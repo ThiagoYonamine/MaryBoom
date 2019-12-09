@@ -1,6 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -11,6 +12,7 @@ public class Menu : MonoBehaviour
     public Sprite win;
     public Sprite defeat;
     public Text level_txt;
+    public GoogleMobileAdsDemoScript ads;
 
     public AudioClip[] starSound;
     public AudioClip winSound;
@@ -19,12 +21,12 @@ public class Menu : MonoBehaviour
 
     public void Start()
     {
-
         this.gameObject.SetActive(false);
         for (int i = 0; i<3; i++) { 
             stars[i].SetActive(false);
             buttons[i].SetActive(false);
         }
+        buttons[3].SetActive(false);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -39,28 +41,35 @@ public class Menu : MonoBehaviour
 
         }
 
-        if (n > 0) n = 3;
-        else n = 2;
-
-        for (int b = 0; b < n; b++)
+        // number of star > 0 = victory case
+        if (n > 0)
         {
-            // Game Over case, should not active next btn
-            if (n==2 && b==1) 
-            {
-                buttons[b+1].SetActive(true);
-            }
-            else
-            {
-                buttons[b].SetActive(true);
-            }
-            
+            buttons[0].SetActive(true); // replay
             yield return new WaitForSeconds(0.2f);
+            buttons[1].SetActive(true); // next
+            yield return new WaitForSeconds(0.2f);
+            buttons[2].SetActive(true); // home
         }
-
+        // defeat case
+        else
+        {
+            buttons[0].SetActive(true); // replay
+            yield return new WaitForSeconds(0.2f);
+            buttons[2].SetActive(true); // home
+            yield return new WaitForSeconds(0.2f);
+            buttons[3].SetActive(true); // reward
+            buttons[3].GetComponent<Button>().interactable = false;
+            StartCoroutine(SetRewardActive());
+            
+        }
     }
 
     public void Play(int n, int level)
     {
+        if (n <= 0)
+        {
+            LoadRewarded();
+        }
         if (BGMusic.Instance != null)
         {
             BGMusic.Instance.PauseMusic();
@@ -86,6 +95,62 @@ public class Menu : MonoBehaviour
         if (PlayerPrefs.GetInt("Sound", 0) == 1)
         {
             audioSource.PlayOneShot(audio);
+        }
+    }
+
+    public int GetCurrentScene()
+    {
+        string scene = SceneManager.GetActiveScene().name;
+        try
+        {
+            return Int32.Parse(scene.Substring(4));
+
+        }
+        catch (FormatException)
+        {
+            Debug.Log("Unable to parse int");
+            return 0;
+        }
+    }
+
+
+    private void LoadRewarded()
+    {
+        if (ads != null)
+        {
+            ads.CreateAndLoadRewardedAd();
+        }
+    }
+
+    private bool IsRewardedAdLoaded()
+    {
+        if (ads != null)
+        {
+           return ads.IsRewardedAdLoaded();
+        }
+        return false;
+    }
+
+    public void ShowRewarded()
+    {
+        if (ads != null)
+        {
+            ads.ShowRewardedAd(GetCurrentScene());
+            buttons[3].GetComponent<Button>().interactable = false;
+        }
+    }
+
+    IEnumerator SetRewardActive()
+    {
+        int i = 0;
+        for(i=0;i<5;i++)
+        {
+            if (IsRewardedAdLoaded())
+            {
+                buttons[3].GetComponent<Button>().interactable = true;
+                break;
+            }
+            yield return new WaitForSeconds(1);
         }
     }
 }

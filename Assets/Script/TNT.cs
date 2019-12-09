@@ -23,7 +23,6 @@ public class TNT : MonoBehaviour
         this.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
-
     }
 
     public void Detonate()

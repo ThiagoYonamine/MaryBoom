@@ -27,16 +27,20 @@ public class Controller : MonoBehaviour
         menu.gameObject.SetActive(true);
         currentScene = GetCurrentScene();
         currentStar = PlayerPrefs.GetInt(Constant.FASE_PREFIX + currentScene.ToString(), 0);
-        bombNumber = Constant.initb[currentScene];
+        bombNumber = Constant.initb[currentScene] + PlayerPrefs.GetInt(Constant.EXTRA_BOMBS + currentScene, 0);
         bomb.text = bombNumber.ToString();
         menuCalled = false;
 
-        plays = PlayerPrefs.GetInt("Plays", 0);
-        if (plays % 5 == 0)
+        if (ShouldShowInterestial())
         {
             LoadInterestial();
         }
       
+    }
+
+    public bool ShouldShowInterestial()
+    {
+        return currentScene % 5 == 0 && PlayerPrefs.GetInt("Ads" + currentScene, 0) == 0;
     }
 
     public bool IsFinished()
@@ -83,9 +87,10 @@ public class Controller : MonoBehaviour
                 else if (bombNumber >= Constant.star1[currentScene]) starNumber = 1;
             }
             SaveStarPrefs(starNumber);
-            if (plays % 5 == 0)
+            if (ShouldShowInterestial())
             {
                 ShowInterestial();
+                PlayerPrefs.SetInt("Ads" + currentScene, 1);
             }
             Debug.Log("ShowBanner");
             ShowBanner();
@@ -134,6 +139,11 @@ public class Controller : MonoBehaviour
     public void ShowInterestial()
     {
         ads.ShowInterstitial();
+    }
+
+    public void ShowRewarded()
+    {
+        ads.ShowRewardedAd(currentScene);
     }
 
     void OnDestroy()

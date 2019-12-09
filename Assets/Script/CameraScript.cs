@@ -5,19 +5,15 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public GameObject player;
-    private float scaleX;
-    private float scaleY;
     private float desireX;
     private float desireY;
-    private float cameraSpeed;
-    public float cameraSize=5;
 
-    private void Start()
-    {
-        scaleX = 0.4f;
-        scaleY = 0.2f;
-        cameraSpeed = 2;
-    }
+    public float cameraSpeed = 2f;
+    public float scaleX = 0.4f;
+    public float scaleY = 0.2f;
+    public float cameraSize = 5;
+    public float offsetY = 1.2f;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +21,7 @@ public class CameraScript : MonoBehaviour
         float currentCameraSize = this.GetComponent<Camera>().orthographicSize;
         this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(currentCameraSize, cameraSize+playerPosition.y*0.05f, Time.deltaTime*cameraSpeed);
         desireX = playerPosition.x * scaleX;
-        desireY = (playerPosition.y * scaleY)-1.2f;
+        desireY = (playerPosition.y * scaleY)-offsetY;
         Vector3 currentPosition = this.GetComponent<Transform>().position;
         if (Mathf.Abs(currentPosition.x - desireX) > 0.1 || Mathf.Abs(currentPosition.y - desireY) > 0.1)
         {

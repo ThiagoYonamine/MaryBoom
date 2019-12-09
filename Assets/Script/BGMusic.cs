@@ -71,7 +71,7 @@ public class BGMusic : MonoBehaviour
         if (!this.gameObject.GetComponent<AudioSource>().isPlaying)
         {
             musicIndex++;
-            this.gameObject.GetComponent<AudioSource>().clip = musics[musicIndex%2];
+            this.gameObject.GetComponent<AudioSource>().clip = musics[musicIndex%musics.Length];
             this.gameObject.GetComponent<AudioSource>().Play();
         }
     }

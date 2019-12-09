@@ -8,6 +8,8 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 {
     private BannerView bannerView;
     private InterstitialAd interstitial;
+    private RewardedAd rewardedAd;
+    private int rewardedScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,65 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(appId);
     }
+
+    public void CreateAndLoadRewardedAd()
+    {
+#if UNITY_EDITOR
+        string adUnitId = "unused";
+#elif UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+        string adUnitId = "ca-app-pub-3940256099942544/1712485313";
+#else
+        string adUnitId = "unexpected_platform";
+#endif
+        // Create new rewarded ad instance.
+        this.rewardedAd = new RewardedAd(adUnitId);
+
+        // Called when an ad request has successfully loaded.
+        this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        // Called when an ad request failed to load.
+        this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        // Called when an ad is shown.
+        this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+        // Called when an ad request failed to show.
+        this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+        // Called when the user should be rewarded for interacting with the ad.
+        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        // Called when the ad is closed.
+        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+
+        // Create an empty ad request.
+        AdRequest request = this.CreateAdRequest();
+        // Load the rewarded ad with the request.
+        this.rewardedAd.LoadAd(request);
+    }
+
+    public Boolean IsRewardedAdLoaded()
+    {
+        if (this.rewardedAd != null)
+        {
+            return this.rewardedAd.IsLoaded();
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public void ShowRewardedAd(int scene)
+    {
+        rewardedScene = scene;
+        if (this.rewardedAd.IsLoaded())
+        {
+            this.rewardedAd.Show();
+        }
+        else
+        {
+            MonoBehaviour.print("Rewarded ad is not ready yet");
+        }
+    }
+
+
 
     public void RequestInterstitial()
     {
@@ -45,7 +106,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
         this.interstitial.OnAdLeavingApplication += this.HandleInterstitialLeftApplication;
 
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = this.CreateAdRequest();
         // Load the interstitial with the request.
         this.interstitial.LoadAd(request);
     }
@@ -80,11 +141,22 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
         this.bannerView.OnAdLeavingApplication += this.HandleAdLeftApplication;
 
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = this.CreateAdRequest();
 
         // Load the banner with the request.
         bannerView.LoadAd(request);
     }
+
+    // Returns an ad request with custom ad targeting.
+    private AdRequest CreateAdRequest()
+    {
+        return new AdRequest.Builder()
+            .AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
+            .AddKeyword("game")
+            .TagForChildDirectedTreatment(false)
+            .Build();
+    }
+
 
     public void DestroyAds()
     {
@@ -150,5 +222,41 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
         MonoBehaviour.print("HandleAdLeftApplication event received");
     }
 
+    #endregion
+
+    #region RewardedAd callback handlers
+
+    public void HandleRewardedAdLoaded(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleRewardedAdLoaded event received");
+    }
+
+    public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
+    {
+        MonoBehaviour.print(
+            "HandleRewardedAdFailedToLoad event received with message: " + args.Message);
+    }
+
+    public void HandleRewardedAdOpening(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleRewardedAdOpening event received");
+    }
+
+    public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
+    {
+        MonoBehaviour.print(
+            "HandleRewardedAdFailedToShow event received with message: " + args.Message);
+    }
+
+    public void HandleRewardedAdClosed(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleRewardedAdClosed event received");
+    }
+
+    public void HandleUserEarnedReward(object sender, Reward args)
+    {
+        int bombs = PlayerPrefs.GetInt(Constant.EXTRA_BOMBS + rewardedScene, 0);
+        PlayerPrefs.SetInt("Extra" + rewardedScene, ++bombs);
+    }
     #endregion
 }
