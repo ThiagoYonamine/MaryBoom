@@ -6,6 +6,8 @@ public class Mola : MonoBehaviour
 {
     public AudioClip explosionSound;
     private AudioSource audioSource;
+    public float forceIntensityX=15;
+    public float forceIntensityY=10;
 
     private void Start()
     {
@@ -20,7 +22,7 @@ public class Mola : MonoBehaviour
         float forceX = Mathf.Sin(this.transform.eulerAngles.z % 91);
         float forceY = Mathf.Abs(Mathf.Cos(this.transform.eulerAngles.z % 91));
         Debug.Log("X " + forceX + " Y " + forceY);
-        other.GetComponent<Rigidbody>().AddForce(new Vector3(forceX * -15, forceY * 10, 0), ForceMode.VelocityChange);
+        other.GetComponent<Rigidbody>().AddForce(new Vector3(forceX * -forceIntensityX, forceY * forceIntensityY, 0), ForceMode.VelocityChange);
     }
 
     private void PlaySounds()
