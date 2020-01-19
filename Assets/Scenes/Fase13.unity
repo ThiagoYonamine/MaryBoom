@@ -1827,7 +1827,6 @@ MonoBehaviour:
   cameraSize: 5
   offsetY: 1.2
   offsetX: 0
-  initialSize: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

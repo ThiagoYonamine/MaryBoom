@@ -1455,8 +1455,7 @@ MonoBehaviour:
   scaleY: 0.2
   cameraSize: 6.2
   offsetY: 1.5
-  offsetX: 0
-  initialSize: 0
+  offsetX: -1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1484,7 +1483,7 @@ Camera:
   far clip plane: 1000
   field of view: 53.3
   orthographic: 1
-  orthographic size: 5.7
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2436,7 +2435,7 @@ PrefabInstance:
     - target: {fileID: 8246893942606100976, guid: a2d54960074b03e4ca87044831bcaf7d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.3
+      value: 7.26
       objectReference: {fileID: 0}
     - target: {fileID: 8246893942606100976, guid: a2d54960074b03e4ca87044831bcaf7d,
         type: 3}

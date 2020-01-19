@@ -930,8 +930,7 @@ MonoBehaviour:
   scaleY: 0.2
   cameraSize: 5
   offsetY: 1.2
-  offsetX: 0
-  initialSize: 0
+  offsetX: 4
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -959,7 +958,7 @@ Camera:
   far clip plane: 1000
   field of view: 53.3
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1305,6 +1304,26 @@ PrefabInstance:
     - target: {fileID: 6222591553381127549, guid: 561d4e5f009bf024b8f87d9a4fe93755,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

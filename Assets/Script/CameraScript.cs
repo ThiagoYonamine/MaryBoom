@@ -15,8 +15,6 @@ public class CameraScript : MonoBehaviour
     public float offsetY = 1.2f;
     public float offsetX = 0f;
 
-    public float initialSize;
-
     void Start()
     {
         float resolution = Screen.width / (Screen.height * 1.0F);

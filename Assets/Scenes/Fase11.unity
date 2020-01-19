@@ -2588,7 +2588,6 @@ MonoBehaviour:
   cameraSize: 8
   offsetY: 1.2
   offsetX: 0
-  initialSize: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3653,7 +3652,17 @@ PrefabInstance:
     - target: {fileID: 4725343487358042090, guid: 6360cba3089061d41ad16f55c30ddb11,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.25
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725343487358042090, guid: 6360cba3089061d41ad16f55c30ddb11,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725343487358042090, guid: 6360cba3089061d41ad16f55c30ddb11,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4725343487358042091, guid: 6360cba3089061d41ad16f55c30ddb11,
         type: 3}
@@ -3663,6 +3672,11 @@ PrefabInstance:
     - target: {fileID: 4725343486754407383, guid: 6360cba3089061d41ad16f55c30ddb11,
         type: 3}
       propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725343486754407383, guid: 6360cba3089061d41ad16f55c30ddb11,
+        type: 3}
+      propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4725343486754407380, guid: 6360cba3089061d41ad16f55c30ddb11,
@@ -3673,6 +3687,11 @@ PrefabInstance:
     - target: {fileID: 4725343487456913717, guid: 6360cba3089061d41ad16f55c30ddb11,
         type: 3}
       propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725343487456913717, guid: 6360cba3089061d41ad16f55c30ddb11,
+        type: 3}
+      propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4725343487456913714, guid: 6360cba3089061d41ad16f55c30ddb11,
