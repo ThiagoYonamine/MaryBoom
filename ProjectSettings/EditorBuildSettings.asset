@@ -68,4 +68,40 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fase20.unity
     guid: 2d52c2cfd5ac189449c7ebbc34c1f695
+  - enabled: 1
+    path: Assets/Scenes/Fase21.unity
+    guid: ee7e60a5495285f45b4ae5ea9602b2ce
+  - enabled: 1
+    path: Assets/Scenes/Fase22.unity
+    guid: ef8b315ad4aa5b449a8e566915ae89ee
+  - enabled: 1
+    path: Assets/Scenes/Fase23.unity
+    guid: f8df2cb9a71f4ff48a1649b909eec21a
+  - enabled: 1
+    path: Assets/Scenes/Fase24.unity
+    guid: 706ec6009776ad042a332e97cfac6bad
+  - enabled: 1
+    path: Assets/Scenes/Fase25.unity
+    guid: 067d29eff2b97a64c93643a5cef93820
+  - enabled: 1
+    path: Assets/Scenes/Fase26.unity
+    guid: b5b1da029804b8f4d8c3b5fda059b4c3
+  - enabled: 1
+    path: Assets/Scenes/Fase27.unity
+    guid: 82fb7d9e8ac5dd9488c1f0eca352b2fa
+  - enabled: 1
+    path: Assets/Scenes/Fase28.unity
+    guid: 627b6b74d6393744e8f7b5031d56fd9d
+  - enabled: 1
+    path: Assets/Scenes/Fase29.unity
+    guid: e0b52cfade81e8545b03361beabb76e7
+  - enabled: 1
+    path: Assets/Scenes/Fase30.unity
+    guid: 1c70b4ba7ad31dd439602a394ff7c3ee
+  - enabled: 1
+    path: Assets/Scenes/Fim.unity
+    guid: 5ced5ba0bb7582b459fdfb32e707c2e4
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 2e9e5f7a67eec6d438a5fb9621cfbc2b
   m_configObjects: {}

@@ -954,7 +954,6 @@ MonoBehaviour:
   cameraSize: 5
   offsetY: 1.2
   offsetX: -2
-  initialSize: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1187,6 +1186,26 @@ PrefabInstance:
     - target: {fileID: 6222591553381127549, guid: 561d4e5f009bf024b8f87d9a4fe93755,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

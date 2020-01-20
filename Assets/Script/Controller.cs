@@ -40,7 +40,12 @@ public class Controller : MonoBehaviour
 
     public bool ShouldShowInterestial()
     {
-        return currentScene % 5 == 0 && PlayerPrefs.GetInt("Ads" + currentScene, 0) == 0;
+        if (PlayerPrefs.GetInt("Plays", 0) > 10 && PlayerPrefs.GetInt("Ads" + currentScene, 0) == 0)
+        {
+            PlayerPrefs.SetInt("Plays", 0);
+            return true;
+        }
+        return false;
     }
 
     public bool IsFinished()
