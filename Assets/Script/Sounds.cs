@@ -14,7 +14,12 @@ public class Sounds : MonoBehaviour
 
     public void Start()
     {
-        if (PlayerPrefs.GetInt(Type, 0) == 1)
+        if (!PlayerPrefs.HasKey(Type))
+        {
+            PlayerPrefs.SetInt(Type, 1);
+        }
+
+        if (PlayerPrefs.GetInt(Type) == 1)
         {
             currentState = State.active;
             this.GetComponent<Image>().sprite = buttonActived;

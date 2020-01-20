@@ -40,9 +40,8 @@ public class Controller : MonoBehaviour
 
     public bool ShouldShowInterestial()
     {
-        if (PlayerPrefs.GetInt("Plays", 0) > 10 && PlayerPrefs.GetInt("Ads" + currentScene, 0) == 0)
+        if (PlayerPrefs.GetInt("Plays", 0) >= 10 && PlayerPrefs.GetInt("Ads" + currentScene, 0) == 0)
         {
-            PlayerPrefs.SetInt("Plays", 0);
             return true;
         }
         return false;
@@ -95,10 +94,12 @@ public class Controller : MonoBehaviour
             if (ShouldShowInterestial())
             {
                 ShowInterestial();
+                PlayerPrefs.SetInt("Plays", 0);
                 PlayerPrefs.SetInt("Ads" + currentScene, 1);
             }
             Debug.Log("ShowBanner");
             ShowBanner();
+            plays = PlayerPrefs.GetInt("Plays", 0);
             PlayerPrefs.SetInt("Plays", ++plays);
             menu.Play(starNumber, currentScene);
         }

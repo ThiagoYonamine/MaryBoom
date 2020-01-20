@@ -32,7 +32,6 @@ public class CameraScript : MonoBehaviour
         if (cameraSpeed < 2f)
         {
             cameraSpeed *= 1.05f;
-            Debug.Log("cameraSize: " + cameraSpeed);
         }
         this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(currentCameraSize, cameraSize+playerPosition.y*0.05f, Time.deltaTime*cameraSpeed);
 

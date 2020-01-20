@@ -20,7 +20,6 @@ public class MenuMusic : MonoBehaviour
     public void RefreshPlayerPrefs()
     {
         shouldPlay = PlayerPrefs.GetInt("Music") == 1;
-        Debug.Log(shouldPlay);
         if (shouldPlay)
         {
             PlayMusic();

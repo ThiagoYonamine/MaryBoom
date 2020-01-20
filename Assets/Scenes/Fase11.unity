@@ -916,9 +916,9 @@ MonoBehaviour:
   cameraSpeed: 2
   scaleX: 0.4
   scaleY: 0.2
-  cameraSize: 5
+  cameraSize: 6
   offsetY: 1.2
-  offsetX: -2
+  offsetX: -3
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
