@@ -12,7 +12,6 @@ public class Mola : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        PlayerPrefs.SetInt("Sound", 1);
     }
 
     void OnTriggerEnter(Collider other)
@@ -21,7 +20,6 @@ public class Mola : MonoBehaviour
         PlaySounds();
         float forceX = Mathf.Sin(this.transform.eulerAngles.z % 91);
         float forceY = Mathf.Abs(Mathf.Cos(this.transform.eulerAngles.z % 91));
-        Debug.Log("X " + forceX + " Y " + forceY);
         other.GetComponent<Rigidbody>().AddForce(new Vector3(forceX * -forceIntensityX, forceY * forceIntensityY, 0), ForceMode.VelocityChange);
     }
 

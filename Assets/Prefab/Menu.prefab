@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4726325831319147023}
   - component: {fileID: 3913537349624022192}
   - component: {fileID: 7547667592857195293}
+  - component: {fileID: 1848421152665617130}
   m_Layer: 5
   m_Name: Reward_btn
   m_TagString: Untagged
@@ -113,7 +114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -37, y: -427}
+  m_AnchoredPosition: {x: -37, y: -433}
   m_SizeDelta: {x: 246.9, y: 137.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9043710227194795999
@@ -241,6 +242,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1848421152665617130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691449474697836240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 6.87, y: 6.87}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1865254982050029132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,7 +1466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6171583752350330378
 RectTransform:
   m_ObjectHideFlags: 0

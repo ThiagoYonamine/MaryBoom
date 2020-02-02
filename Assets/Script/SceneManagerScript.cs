@@ -52,4 +52,10 @@ public class SceneManagerScript : MonoBehaviour
             GotoScene(Constant.MENU);
         }
     }
+
+    public void RateApp()
+    {
+        Debug.Log("market://details?id=" + Application.identifier);
+        Application.OpenURL("market://details?id=" + Application.identifier);
+    }
 }

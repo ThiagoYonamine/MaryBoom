@@ -9,10 +9,12 @@ public class Controller : MonoBehaviour
 {
     public Menu menu;
     public Text bomb;
+    public Text extraBomb;
     public Text PerfectStar;
     public Image fade;
     public GoogleMobileAdsDemoScript ads;
     private int bombNumber;
+    private int extraBombNumber;
     private int currentScene;
     private int currentStar;
     private bool menuCalled;
@@ -29,10 +31,12 @@ public class Controller : MonoBehaviour
         menu.gameObject.SetActive(true);
         currentScene = GetCurrentScene();
         currentStar = PlayerPrefs.GetInt(Constant.FASE_PREFIX + currentScene.ToString(), 0);
-        bombNumber = Constant.initb[currentScene] + PlayerPrefs.GetInt(Constant.EXTRA_BOMBS + currentScene, 0);
+        bombNumber = Constant.initb[currentScene];
+        extraBombNumber = PlayerPrefs.GetInt(Constant.EXTRA_BOMBS + currentScene, 0);
+        updateExtraBombs();
         bomb.text = bombNumber.ToString();
         menuCalled = false;
-        perfectStarCount = (Constant.initb[currentScene] - Constant.star3[currentScene]);
+        perfectStarCount = (bombNumber+extraBombNumber - Constant.star3[currentScene]);
         PerfectStar.text = perfectStarCount.ToString();
 
         //Set player stats
@@ -42,6 +46,19 @@ public class Controller : MonoBehaviour
         if (ShouldShowInterestial())
         {
             LoadInterestial();
+        }
+      
+    }
+
+    private void updateExtraBombs()
+    {
+        if (extraBombNumber > 0)
+        {
+            extraBomb.gameObject.SetActive(true);
+            extraBomb.text = "+" + extraBombNumber.ToString();
+        } else
+        {
+            extraBomb.gameObject.SetActive(false);
         }
       
     }
@@ -62,8 +79,17 @@ public class Controller : MonoBehaviour
 
     public void DecrementBombNumber()
     {
-        bombNumber--;
-        bomb.text = bombNumber.ToString();
+        if(extraBombNumber > 0)
+        {
+            extraBombNumber--;
+            updateExtraBombs();
+        }
+        else
+        {
+            bombNumber--;
+            bomb.text = bombNumber.ToString();
+        }
+      
 
         perfectStarCount--;
         if (perfectStarCount < 0)

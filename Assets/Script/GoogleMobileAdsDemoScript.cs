@@ -14,9 +14,11 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID
-            string appId = "ca-app-pub-3940256099942544~3347511713";
+        //string appId = "ca-app-pub-3940256099942544~3347511713"; test
+            string appId = "ca-app-pub-4279667014010134~2422387705";
 #elif UNITY_IPHONE
-            string appId = "ca-app-pub-3940256099942544~1458002511";
+            //string appId = "ca-app-pub-3940256099942544~1458002511"; test
+            string appId = "ca-app-pub-4279667014010134~2422387705";
 #else
             string appId = "unexpected_platform";
 #endif
@@ -30,9 +32,11 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 #if UNITY_EDITOR
         string adUnitId = "unused";
 #elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        //string adUnitId = "ca-app-pub-3940256099942544/5224354917";test
+        string adUnitId = "ca-app-pub-4279667014010134/6215100893";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/1712485313";
+        //string adUnitId = "ca-app-pub-3940256099942544/1712485313";test
+        string adUnitId = "ca-app-pub-4279667014010134/6215100893";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -87,9 +91,11 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
     public void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        //string adUnitId = "ca-app-pub-3940256099942544/1033173712";test
+        string adUnitId = "ca-app-pub-4279667014010134/4802495616";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+       // string adUnitId = "ca-app-pub-3940256099942544/4411468910";test
+        string adUnitId = "ca-app-pub-4279667014010134/4802495616";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -123,9 +129,11 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
     public void RequestBanner()
     {
 #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        //string adUnitId = "ca-app-pub-3940256099942544/6300978111";test
+        string adUnitId = "ca-app-pub-4279667014010134/6049468063";
 #elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+            //string adUnitId = "ca-app-pub-3940256099942544/2934735716";test
+        string adUnitId = "ca-app-pub-4279667014010134/6049468063";
 #else
             string adUnitId = "unexpected_platform";
 #endif
