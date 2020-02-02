@@ -96,8 +96,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.39433098
-  m_Center: {x: 0.03, y: -0.17, z: 0}
+  m_Radius: 0.40813327
+  m_Center: {x: 0.030000001, y: -0.038593113, z: 0}
 --- !u!54 &8246893942606100989
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  hitSound: {fileID: 8300000, guid: 2267a4e6c68e8a2499c65b0b1ca25719, type: 3}
 --- !u!95 &8246893942606100978
 Animator:
   serializedVersion: 3

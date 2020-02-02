@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     {
         if (!controller.HasBomb())
         {
-            if (gameOverTimer <= 0 || IsStopped())
+            if (gameOverTimer <= 0 || (IsStopped() && gameOverTimer <3))
             {
                 controller.ShowMenu(false);
             }
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
                 controller.FadeOut(variation * 0.08f);
             }
         }
-        else if (IsOutOfScene() || touchedEnemy)
+        if (IsOutOfScene() || touchedEnemy)
         {
             controller.ShowMenu(false);
         }

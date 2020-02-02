@@ -19,7 +19,7 @@ public class Bomb : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         pressed = false;
-        plusY = 1.8f;
+        plusY = 1.5f;
     }
 
     void Update()
@@ -57,7 +57,11 @@ public class Bomb : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended)
             {
-                audioSource.PlayOneShot(explosionSound);
+                    //Set player stats
+                int totalBombs = PlayerPrefs.GetInt("TotalBombs", 0);
+                PlayerPrefs.SetInt("TotalBombs", ++totalBombs);
+
+                PlaySounds();
                 controller.DecrementBombNumber();
                 Vector3 position = cam.ScreenToWorldPoint(touch.position);
                 Vector2 bombSize = bombInstance.GetComponent<Transform>().localScale;
@@ -78,17 +82,21 @@ public class Bomb : MonoBehaviour
         if (pressed)
         {
             Vector3 position = cam.ScreenToWorldPoint(Input.mousePosition);
-            bombInstance.GetComponent<Transform>().position = new Vector3(position.x, position.y+plusY, 0);
+            bombInstance.GetComponent<Transform>().position = new Vector3(position.x, position.y+plusY-0.5f, 0);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            //Set player stats
+            int totalBombs = PlayerPrefs.GetInt("TotalBombs", 0);
+            PlayerPrefs.SetInt("TotalBombs", ++totalBombs);
+
             PlaySounds();
             controller.DecrementBombNumber();
             Vector3 position = cam.ScreenToWorldPoint(Input.mousePosition);
             Vector2 bombSize = bombInstance.GetComponent<Transform>().localScale;
             explosion.GetComponent<Transform>().localScale = bombSize * 2;
-            Instantiate(explosion, new Vector3(position.x, position.y+plusY, 0), Quaternion.identity);
+            Instantiate(explosion, new Vector3(position.x, position.y+plusY-0.5f, 0), Quaternion.identity);
             Destroy(bombInstance);
             pressed = false;
         }

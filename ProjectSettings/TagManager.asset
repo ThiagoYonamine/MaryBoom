@@ -70,3 +70,6 @@ TagManager:
   - name: Menu
     uniqueID: 2349466201
     locked: 0
+  - name: Tutorial
+    uniqueID: 2207247247
+    locked: 0

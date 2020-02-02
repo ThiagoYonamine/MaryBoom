@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text score;
+    public Text bombs;
+    public Text plays;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,9 @@ public class Score : MonoBehaviour
         }
         
         score.text = sum+"/90";
+
+        bombs.text = PlayerPrefs.GetInt("TotalBombs").ToString();
+        plays.text = PlayerPrefs.GetInt("TotalPlays").ToString();
     }
 
 }

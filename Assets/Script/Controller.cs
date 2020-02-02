@@ -9,6 +9,7 @@ public class Controller : MonoBehaviour
 {
     public Menu menu;
     public Text bomb;
+    public Text PerfectStar;
     public Image fade;
     public GoogleMobileAdsDemoScript ads;
     private int bombNumber;
@@ -16,6 +17,7 @@ public class Controller : MonoBehaviour
     private int currentStar;
     private bool menuCalled;
     private int plays;
+    private int perfectStarCount;
 
     void Start()
     {
@@ -30,6 +32,12 @@ public class Controller : MonoBehaviour
         bombNumber = Constant.initb[currentScene] + PlayerPrefs.GetInt(Constant.EXTRA_BOMBS + currentScene, 0);
         bomb.text = bombNumber.ToString();
         menuCalled = false;
+        perfectStarCount = (Constant.initb[currentScene] - Constant.star3[currentScene]);
+        PerfectStar.text = perfectStarCount.ToString();
+
+        //Set player stats
+        int totalPlays = PlayerPrefs.GetInt("TotalPlays", 0);
+        PlayerPrefs.SetInt("TotalPlays", ++totalPlays);
 
         if (ShouldShowInterestial())
         {
@@ -56,6 +64,18 @@ public class Controller : MonoBehaviour
     {
         bombNumber--;
         bomb.text = bombNumber.ToString();
+
+        perfectStarCount--;
+        if (perfectStarCount < 0)
+        {
+            PerfectStar.text = "-";
+        }
+        else
+        {
+            PerfectStar.text = perfectStarCount.ToString();
+        }
+       
+
     }
 
     public void FadeOut(float value)

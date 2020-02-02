@@ -357,7 +357,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1150991975
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.13999999, y: 0.13999999, z: 0}
@@ -1409,6 +1409,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 506128836}
+  cameraSpeed: 2
+  scaleX: 0.4
+  scaleY: 0.2
+  cameraSize: 5
+  offsetY: 1.2
+  offsetX: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1759,6 +1765,7 @@ MonoBehaviour:
   bomb: {fileID: 5287396596151906283, guid: c1655b5df9873314d8ea2a24a905c0e6, type: 3}
   cam: {fileID: 519420031}
   controller: {fileID: 910562248}
+  explosionSound: {fileID: 0}
 --- !u!4 &831888602
 Transform:
   m_ObjectHideFlags: 0
@@ -1826,7 +1833,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 760950415
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 65605faa4d260d243a71749594871fa0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1836,7 +1843,7 @@ SpriteRenderer:
   m_Size: {x: 20.48, y: 15.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &838589775
@@ -1976,9 +1983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e0fd1a041a38d4cab10d9ec043f207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 1011726936}
+  menu: {fileID: 0}
   bomb: {fileID: 652204012}
   fade: {fileID: 1329570134}
+  ads: {fileID: 0}
 --- !u!4 &910562249
 Transform:
   m_ObjectHideFlags: 0

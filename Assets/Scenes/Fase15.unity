@@ -814,15 +814,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.1347625
       objectReference: {fileID: 0}
-    - target: {fileID: 1924662413993711679, guid: d1a5ca9d6cb99bd4d8f1ce5e796bc6ef,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1924662413993711678, guid: d1a5ca9d6cb99bd4d8f1ce5e796bc6ef,
         type: 3}
       propertyPath: m_Mass
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924662413993711679, guid: d1a5ca9d6cb99bd4d8f1ce5e796bc6ef,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a5ca9d6cb99bd4d8f1ce5e796bc6ef, type: 3}
@@ -1181,11 +1181,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6222591553381127549, guid: 561d4e5f009bf024b8f87d9a4fe93755,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2130324942861376667, guid: 561d4e5f009bf024b8f87d9a4fe93755,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1206,8 +1201,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6222591553381127549, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561d4e5f009bf024b8f87d9a4fe93755, type: 3}
+--- !u!114 &632778405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7018296373373264726, guid: 561d4e5f009bf024b8f87d9a4fe93755,
+    type: 3}
+  m_PrefabInstance: {fileID: 632778404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &756119809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1511,6 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 399907821}
   bomb: {fileID: 1228070298}
+  PerfectStar: {fileID: 632778405}
   fade: {fileID: 1118967870}
   ads: {fileID: 816961005}
 --- !u!4 &910562249
